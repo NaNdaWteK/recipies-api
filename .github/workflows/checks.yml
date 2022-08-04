@@ -3,8 +3,7 @@ name: Checks
 
 on: 
   push:
-    paths:
-      - './**'
+
 jobs:
   test-lint:
     name: Test and Lint
