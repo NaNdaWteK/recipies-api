@@ -11,7 +11,7 @@ on: [push]
           uses: docker/login-action@v1
           with:
             username: ${{ secrets.DOCKER_HUB_USER }}
-            PASSWORD: ${{ secrets.DOCKER_HUB_TOKEN }}
+            password: ${{ secrets.DOCKER_HUB_TOKEN }}
         - name: Checkout
           uses: actions/checkout@v2
         - name: Lint
