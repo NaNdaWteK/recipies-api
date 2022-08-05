@@ -41,3 +41,9 @@
 `$ docker-compose run --rm app sh -c "python manage.py wait_for_db && python manage.py migrate"`
 
 **Delete volume if errors 'used before'**
+
+## Django CLI
+
+## Create superuser
+
+`$ docker-compose run --rm app sh -c "python manage.py createsuperuser"`
