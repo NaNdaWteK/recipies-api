@@ -8,7 +8,7 @@
 
 `$ docker-compose build`
 
-## Create Django project 
+## Create Django project
 
 `$ docker-compose run --rm app sh -c "django-admin startproject app ."`
 
@@ -29,3 +29,15 @@
 ## Start app
 
 `$ docker-compose up`
+
+## Migrations
+
+## Make
+
+`$ docker-compose run --rm app sh -c "python manage.py makemigrations"`
+
+### Apply
+
+`$ docker-compose run --rm app sh -c "python manage.py wait_for_db && python manage.py migrate"`
+
+**Delete volume if errors 'used before'**
