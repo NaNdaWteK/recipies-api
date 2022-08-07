@@ -12,6 +12,10 @@
 
 `$ docker-compose run --rm app sh -c "django-admin startproject app ."`
 
+## Create app models
+
+`$ docker-compose run --rm app sh -c "python manage.py startapp user"`
+
 ## Linting
 
 ### Use flake8 package
