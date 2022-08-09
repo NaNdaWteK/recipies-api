@@ -72,7 +72,9 @@ class PublicUserApiTest(TestCase):
         create_user(**user_data)
         auth_res = self.client.post(TOKEN_URL, payload)
 
-        self.client.credentials(HTTP_AUTHORIZATION='Bearer ' + auth_res.data['access'])
+        self.client.credentials(
+            HTTP_AUTHORIZATION='Bearer ' + auth_res.data['access']
+        )
 
         res = self.client.get(ME_URL)
 
@@ -82,8 +84,6 @@ class PublicUserApiTest(TestCase):
         res = self.client.get(ME_URL)
 
         self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
-
-
 
     class PrivateUserApiTests(TestCase):
 
@@ -106,10 +106,12 @@ class PublicUserApiTest(TestCase):
                 'email': self.user.email,
             })
 
-        def test_retrieve_profile_success(self):
+        def test_retrieve_profile_method_not_allowed(self):
             res = self.client.post(ME_URL)
 
-            self.assertEqual(res.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
+            self.assertEqual(
+                res.status_code, status.HTTP_405_METHOD_NOT_ALLOWED
+            )
 
         def test_update_user_profile(self):
             payload = {'name': 'Updated name', 'password': 'newpass123'}
@@ -120,4 +122,3 @@ class PublicUserApiTest(TestCase):
             self.assertEqual(self.user.name, payload['name'])
             self.assertTrue(self.user.check_password(payload['password']))
             self.assertEqual(res.status_code, status.HTTP_200_OK)
-
